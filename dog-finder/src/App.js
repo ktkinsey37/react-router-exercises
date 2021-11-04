@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import React from "react"
 import { Switch } from "react-router"
-import { BrowserRouter, NavLink, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, NavLink, Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import DogList from "./DogList"
 import DogDetails from "./DogDetails"
 import Nav from "./Nav"
