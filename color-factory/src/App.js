@@ -1,23 +1,33 @@
 import logo from './logo.svg';
+import { Switch } from "react-router"
+import { BrowserRouter, NavLink, Routes, Route, Navigate, useNavigate } from "react-router-dom";
+import React, {useState} from "react";
 import './App.css';
+import ColorFactory from './ColorFactory';
 
 function App() {
+  // const [colors, setColors] = useState([]);
+  // console.log(colors, "colors in app")
+
+  // /** Add a circle w/newColor */
+  // function addColor({color}) {
+  //   setColors(colors => [
+  //     ...colors,
+  //     { color: color},
+  //   ]);
+  // }
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <BrowserRouter>
+          <Routes>
+            <Route exact path="/colors" element={<ColorFactory />} >
+            </Route>
+          </Routes>
+
+
+        </BrowserRouter>
     </div>
   );
 }
