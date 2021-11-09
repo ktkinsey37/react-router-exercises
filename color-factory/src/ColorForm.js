@@ -1,38 +1,34 @@
 import React, { useState } from "react";
-import { BrowserRouter, NavLink, Routes, Route, Navigate, useNavigate } from "react-router-dom";
+import {
+  BrowserRouter,
+  NavLink,
+  Routes,
+  Route,
+  Navigate,
+  useNavigate,
+} from "react-router-dom";
 import { v4 as uuid } from "uuid";
 
-/** Form for creating a new item to add to a list.
- *
- * Has state for the name/quantity of the item; on submission,
- * sends {name, qty} to fn rec'd from parent.
- *
- */
+
 
 const ColorForm = ({ addColor }) => {
-  const INITIAL_STATE = {"color": "#0b0505"};
+  const INITIAL_STATE = { color: "#0b0505" };
   const [formData, setFormData] = useState(INITIAL_STATE);
 
-  /** Send {name, quantity} to parent
-   *    & clear form. */
 
-  const handleSubmit = evt => {
+  const handleSubmit = (evt) => {
     evt.preventDefault();
     addColor(formData);
     setFormData(INITIAL_STATE);
   };
 
-  /** Update local state w/curr state of input elem */
-
-  const handleChange = evt => {
-    const { name, value }= evt.target;
-    setFormData(fData => ({
+  const handleChange = (evt) => {
+    const { name, value } = evt.target;
+    setFormData((fData) => ({
       ...fData,
-      [name]: value
+      [name]: value,
     }));
   };
-
-  /** render form */
 
   return (
     <form onSubmit={handleSubmit}>
@@ -45,7 +41,15 @@ const ColorForm = ({ addColor }) => {
         placeholder="Color"
       />
 
-      <button>Add a new Color!</button>
+      <label htmlFor="name">Name:</label>
+      <input
+        type="text"
+        name="name"
+        value={formData.name}
+        onChange={handleChange}
+        placeholder="name"
+      />
+      <button>Add the color name!</button>
     </form>
   );
 };

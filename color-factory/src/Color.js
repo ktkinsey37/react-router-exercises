@@ -1,25 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import {
+  Link
+} from "react-router-dom";
 
-function Color({id, color}) {
+function Color({ lookForColorByName }) {
+  // try{
+  //   console.log(lookForColorByName(name).color)
+  // } catch {
+  //   throw new Error("Color needs to be defined first")
+  // }
 
-  // console.log(props, props.box.color, "THIS IS THE LINE THAT IS BOTH LOGGING AND THROWING?")
-
+  let { name } = useParams();
+  let [color, setColor] = useState("");
+  console.log(lookForColorByName(name));
+  useEffect(() => {
+    setColor(lookForColorByName(name).color);
+  }, []);
   return (
     <div>
-          <div
+      <div
         className="color"
-        key={id}
         style={{
-          backgroundColor: `${color}`,
+          backgroundColor: color,
           position: "relative",
-          height: `100%`,
-          width: `100%`
+          height: `500px`,
+          width: `500px`,
         }}
       >
+        {color}
       </div>
+      <Link to={"/"}>Home</Link>
     </div>
-
   );
 }
 
-export default Color;
+export { Color };
